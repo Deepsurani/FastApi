@@ -5,7 +5,10 @@ from app.database import engine,Base
 
 app = FastAPI()
 
-Base.metadata.create_all(bind=engine)
+@app.on_event("startup")
+def create_tables():
+    Base.metadata.create_all(bind=engine)
+
 
 @app.post("/students")
 def create(data:StudentSchema):
