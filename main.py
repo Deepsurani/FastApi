@@ -17,3 +17,15 @@ def create(data:StudentSchema):
 @app.get("/students")
 def list():
     return List()
+
+@app.get("/students/{id}")
+def get(id: int):
+    return Get(id)
+
+@app.put("/students/{id}")
+def update(id: int, data: StudentSchema):
+    return Update(id, data)
+
+@app.delete("/students/{id}")
+def delete(id: int):
+    return Delete(id)
